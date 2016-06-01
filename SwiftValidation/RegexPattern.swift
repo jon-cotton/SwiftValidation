@@ -25,12 +25,12 @@ public extension RegexPattern {
     }
 }
 
-public extension RegexPattern where Self: String {
-    var pattern: String {
+extension String: RegexPattern {
+    public var pattern: String {
         return self
     }
     
-    var errorToThrow: ErrorType {
+    public var errorToThrow: ErrorType {
         return RegexError.stringDoesNotMatchRegexPattern
     }
 }
