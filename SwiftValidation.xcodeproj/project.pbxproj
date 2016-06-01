@@ -10,6 +10,8 @@
 		FC723B821CFEEECA004DB504 /* SwiftValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = FC723B811CFEEECA004DB504 /* SwiftValidation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FC723B891CFEEECA004DB504 /* SwiftValidation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC723B7E1CFEEECA004DB504 /* SwiftValidation.framework */; };
 		FC723B8E1CFEEECA004DB504 /* SwiftValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC723B8D1CFEEECA004DB504 /* SwiftValidationTests.swift */; };
+		FC723B9C1CFEF1EB004DB504 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC723B9B1CFEF1EB004DB504 /* Validator.swift */; };
+		FC723B9E1CFEF219004DB504 /* Validateable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC723B9D1CFEF219004DB504 /* Validateable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		FC723B881CFEEECA004DB504 /* SwiftValidationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftValidationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC723B8D1CFEEECA004DB504 /* SwiftValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftValidationTests.swift; sourceTree = "<group>"; };
 		FC723B8F1CFEEECA004DB504 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC723B9B1CFEF1EB004DB504 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		FC723B9D1CFEF219004DB504 /* Validateable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validateable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,8 @@
 		FC723B801CFEEECA004DB504 /* SwiftValidation */ = {
 			isa = PBXGroup;
 			children = (
+				FC723B9A1CFEF17A004DB504 /* Regex */,
+				FC723B991CFEF173004DB504 /* Validation */,
 				FC723B811CFEEECA004DB504 /* SwiftValidation.h */,
 				FC723B831CFEEECA004DB504 /* Info.plist */,
 			);
@@ -84,6 +90,22 @@
 				FC723B8F1CFEEECA004DB504 /* Info.plist */,
 			);
 			path = SwiftValidationTests;
+			sourceTree = "<group>";
+		};
+		FC723B991CFEF173004DB504 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				FC723B9B1CFEF1EB004DB504 /* Validator.swift */,
+				FC723B9D1CFEF219004DB504 /* Validateable.swift */,
+			);
+			name = Validation;
+			sourceTree = "<group>";
+		};
+		FC723B9A1CFEF17A004DB504 /* Regex */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Regex;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +216,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC723B9C1CFEF1EB004DB504 /* Validator.swift in Sources */,
+				FC723B9E1CFEF219004DB504 /* Validateable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +334,7 @@
 		FC723B931CFEEECA004DB504 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -321,12 +346,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.joncotton.SwiftValidation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		FC723B941CFEEECA004DB504 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -380,6 +407,7 @@
 				FC723B941CFEEECA004DB504 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FC723B951CFEEECA004DB504 /* Build configuration list for PBXNativeTarget "SwiftValidationTests" */ = {
 			isa = XCConfigurationList;
@@ -388,6 +416,7 @@
 				FC723B971CFEEECA004DB504 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
