@@ -93,6 +93,114 @@ try 100.0.validValue(.range(0.1, 99.9)) // fail
 ```
 
 ### Writing a custom Validator
+If you have a custom type that you want to be able to validate, you just need to make the type conform to `Validateable` by providing a `Validator` that can validate your type.
+
+If you had a `Person` type that looked like...
+```swift
+struct Person {
+    var firstname = ""
+    var surname = ""
+    var age = 0
+    var emailAddress: String?
+}
+```
+
+You would first need a `PersonValidator` that conforms to `Validator` and an error to throw on failure...
+```swift
+struct PersonValidator: Validator {
+    func isValid(value: Person) throws -> Bool {
+        let person = value
+
+        // only adults with email addresses are valid people
+        guard person.age >= 18 && person.emailAddress != nil  else {
+            throw PersonValidationError.notAValidPerson
+        }
+
+        return true
+    }
+}
+
+enum PersonValidationError: ErrorType {
+    case notAValidPerson
+}
+```
+
+You then just need to make Person conform to `Validateable`. The default behaviour already provided by the protocol extension is usually ok, you just need to resolve the generic `ValidatorType` to the Validator you've just created...
+
+```swift
+extension Person: Validateable {
+    typealias ValidatorType = PersonValidator
+}
+```
+
+Now you can validate a person...
+```swift
+// The following code prints notAValidPerson to console
+
+var somebody = Person()
+somebody.firstname = "Jim"
+somebody.surname = "Robinson"
+somebody.age = 12
+
+do {
+    let validPerson = try somebody.validValue(PersonValidator())
+} catch let errors as AggregateError {
+    print(errors.reduce("", combine: { "\($0) \($1)" }))
+} catch {
+    // Another error occurred
+}
+```
+
+You can of course be more granular with your validation rules , a nicer way to implement the PersonValidator above might be...
+```swift
+enum PersonValidator: Validator {
+    case mustBeAdult
+    case mustHaveEmailAddress
+    case surnameMustBeLongerThan(Int)
+
+    func isValid(value: Person) throws -> Bool {
+        let person = value
+
+        switch self {
+        case .mustBeAdult:
+            guard person.age >= 18  else {
+                 throw PersonValidationError.personIsNotAnAdult
+            }
+
+        case .mustHaveEmailAddress:
+            guard person.emailAddress != nil else {
+                throw PersonValidationError.personDoesNotHaveAnEmailAddress
+            }
+
+        case .surnameMustBeLongerThan(let minLength):
+            guard person.surname.characters.count >= minLength else {
+                throw PersonValidationError.personsSurnameIsTooShort
+            }
+        }
+
+        return true
+    }
+}
+
+enum PersonValidationError: ErrorType {
+    case personIsNotAnAdult
+    case personDoesNotHaveAnEmailAddress
+    case personsSurnameIsTooShort
+}
+```
+
+In use...
+```swift
+// The following code prints personIsNotAnAdult personDoesNotHaveAnEmailAddress to console
+
+do {
+    let validPerson = try somebody.validValue(.mustBeAdult, .mustHaveEmailAddress)
+} catch let errors as AggregateError {
+    print(errors.reduce("", combine: { "\($0) \($1)" }))
+} catch {
+    // Another error occurred
+}
+```
 
 ## New types
 
