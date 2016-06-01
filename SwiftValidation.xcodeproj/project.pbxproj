@@ -12,6 +12,7 @@
 		FC723B8E1CFEEECA004DB504 /* SwiftValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC723B8D1CFEEECA004DB504 /* SwiftValidationTests.swift */; };
 		FC723B9C1CFEF1EB004DB504 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC723B9B1CFEF1EB004DB504 /* Validator.swift */; };
 		FC723B9E1CFEF219004DB504 /* Validateable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC723B9D1CFEF219004DB504 /* Validateable.swift */; };
+		FC723BA11CFEF3B5004DB504 /* AggregateError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC723BA01CFEF3B5004DB504 /* AggregateError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +34,7 @@
 		FC723B8F1CFEEECA004DB504 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC723B9B1CFEF1EB004DB504 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		FC723B9D1CFEF219004DB504 /* Validateable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validateable.swift; sourceTree = "<group>"; };
+		FC723BA01CFEF3B5004DB504 /* AggregateError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AggregateError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 		FC723B801CFEEECA004DB504 /* SwiftValidation */ = {
 			isa = PBXGroup;
 			children = (
+				FC723B9F1CFEF39B004DB504 /* Errors */,
 				FC723B9A1CFEF17A004DB504 /* Regex */,
 				FC723B991CFEF173004DB504 /* Validation */,
 				FC723B811CFEEECA004DB504 /* SwiftValidation.h */,
@@ -106,6 +109,14 @@
 			children = (
 			);
 			name = Regex;
+			sourceTree = "<group>";
+		};
+		FC723B9F1CFEF39B004DB504 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				FC723BA01CFEF3B5004DB504 /* AggregateError.swift */,
+			);
+			name = Errors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC723BA11CFEF3B5004DB504 /* AggregateError.swift in Sources */,
 				FC723B9C1CFEF1EB004DB504 /* Validator.swift in Sources */,
 				FC723B9E1CFEF219004DB504 /* Validateable.swift in Sources */,
 			);
