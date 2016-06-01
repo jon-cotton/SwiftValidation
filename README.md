@@ -51,8 +51,13 @@ Confirm: "letmein223"
 do {
     let passwordConfirmation = try passwordConfirmationTextField.validValue(.nonEmpty)
     let password = try passwordTextField.validValue(.nonEmpty, .minimumLength(12), .match(passwordConfirmation))
-} catch let errors as AggregateError {
-    print(errors.reduce("", combine: { "\($0) \($1)" }))
+} catch let UIError as ValidationUserInputError {
+    /*
+    ValidationUserInputError is a wrapper around an AggregateError that also has a UIElement property
+    that holds a reference to the UIControl that the error relates to, this allows you to check multiple
+    fields in a single do, catch and then tie the errors back up the relevant UIControl later.
+    */
+    print(UIError.errors.reduce("", combine: { "\($0) \($1)" }))
 } catch {
     // Some other error occurred
 }
@@ -73,7 +78,7 @@ The built in `StringValidator` has several basic rules that can be used to build
 
 ### Comparable Validator
 
-The `ComparableValidator` allows you to validate any Comparable type against another value of the same type, the library extends the built in `Int`, `Double` and `Float` types to be validateable using ComparableValidators.
+The `ComparableValidator` allows you to validate any `Comparable` type against another value of the same type, the library extends the built in `Int`, `Double` and `Float` types to be validateable using ComparableValidators.
 
 - `.minimumValue(Self)`
 - `.maximumValue(Self)`
@@ -98,7 +103,7 @@ public enum StringValidationPattern: String, RegexPattern {
     case alphaOnly = "^[a-zA-Z]*$"
     case numericOnly = "^[0-9]*$"
     case alphaNumericOnly = "^[a-zA-Z0-9]*$"
-    case email = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$`"
+    case email = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
 
     public var errorToThrow: ErrorType {
         switch self {

@@ -8,30 +8,30 @@
 
 import Foundation
 
-struct AggregateError: ErrorType {
-    private(set) var errors: [ErrorType] = []
+public struct AggregateError: ErrorType {
+    private var errors: [ErrorType] = []
     
-    mutating func addError(error: ErrorType) {
+    public mutating func addError(error: ErrorType) {
         errors.append(error)
     }
     
-    var isEmpty: Bool {
+    public var isEmpty: Bool {
         return errors.isEmpty
     }
 }
 
 extension AggregateError: CollectionType {
-    typealias Index = Int
+    public typealias Index = Array<ErrorType>.Index
     
-    var startIndex: Int {
-        return 0
+    public var startIndex: Index {
+        return errors.startIndex
     }
     
-    var endIndex: Int {
-        return errors.count
+    public var endIndex: Index {
+        return errors.endIndex
     }
     
-    subscript(i: Int) -> ErrorType {
+    public subscript(i: Index) -> ErrorType {
         return errors[i]
     }
 }

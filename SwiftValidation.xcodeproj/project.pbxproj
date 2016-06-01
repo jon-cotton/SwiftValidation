@@ -22,6 +22,7 @@
 		FCE261A61CFEFDC700F183A0 /* StringValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE261A51CFEFDC700F183A0 /* StringValidator.swift */; };
 		FCE261A81CFF011B00F183A0 /* ComparableValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE261A71CFF011B00F183A0 /* ComparableValidator.swift */; };
 		FCE261AA1CFF015C00F183A0 /* ComparableValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE261A91CFF015C00F183A0 /* ComparableValidationError.swift */; };
+		FCE261AC1CFF31E500F183A0 /* ValidationUserInputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE261AB1CFF31E500F183A0 /* ValidationUserInputError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		FCE261A51CFEFDC700F183A0 /* StringValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringValidator.swift; sourceTree = "<group>"; };
 		FCE261A71CFF011B00F183A0 /* ComparableValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComparableValidator.swift; sourceTree = "<group>"; };
 		FCE261A91CFF015C00F183A0 /* ComparableValidationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComparableValidationError.swift; sourceTree = "<group>"; };
+		FCE261AB1CFF31E500F183A0 /* ValidationUserInputError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationUserInputError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 				FC723BA31CFEF430004DB504 /* ValidationError.swift */,
 				FC723BAE1CFEFCE2004DB504 /* StringValidationError.swift */,
 				FCE261A91CFF015C00F183A0 /* ComparableValidationError.swift */,
+				FCE261AB1CFF31E500F183A0 /* ValidationUserInputError.swift */,
 			);
 			name = Errors;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCE261AC1CFF31E500F183A0 /* ValidationUserInputError.swift in Sources */,
 				FC723BAD1CFEFCC9004DB504 /* StringValidationPattern.swift in Sources */,
 				FC723BA11CFEF3B5004DB504 /* AggregateError.swift in Sources */,
 				FC723BA61CFEF5C5004DB504 /* Regex.swift in Sources */,
