@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		FC723B821CFEEECA004DB504 /* SwiftValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = FC723B811CFEEECA004DB504 /* SwiftValidation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FC723B891CFEEECA004DB504 /* SwiftValidation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC723B7E1CFEEECA004DB504 /* SwiftValidation.framework */; };
-		FC723B8E1CFEEECA004DB504 /* SwiftValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC723B8D1CFEEECA004DB504 /* SwiftValidationTests.swift */; };
 		FC723B9C1CFEF1EB004DB504 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC723B9B1CFEF1EB004DB504 /* Validator.swift */; };
 		FC723B9E1CFEF219004DB504 /* Validateable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC723B9D1CFEF219004DB504 /* Validateable.swift */; };
 		FC723BA11CFEF3B5004DB504 /* AggregateError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC723BA01CFEF3B5004DB504 /* AggregateError.swift */; };
@@ -23,6 +22,7 @@
 		FCE261A81CFF011B00F183A0 /* ComparableValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE261A71CFF011B00F183A0 /* ComparableValidator.swift */; };
 		FCE261AA1CFF015C00F183A0 /* ComparableValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE261A91CFF015C00F183A0 /* ComparableValidationError.swift */; };
 		FCE261AC1CFF31E500F183A0 /* ValidationUserInputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE261AB1CFF31E500F183A0 /* ValidationUserInputError.swift */; };
+		FCE261B11CFF55DF00F183A0 /* AggregateErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE261B01CFF55DF00F183A0 /* AggregateErrorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +40,6 @@
 		FC723B811CFEEECA004DB504 /* SwiftValidation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftValidation.h; sourceTree = "<group>"; };
 		FC723B831CFEEECA004DB504 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC723B881CFEEECA004DB504 /* SwiftValidationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftValidationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FC723B8D1CFEEECA004DB504 /* SwiftValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftValidationTests.swift; sourceTree = "<group>"; };
 		FC723B8F1CFEEECA004DB504 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC723B9B1CFEF1EB004DB504 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		FC723B9D1CFEF219004DB504 /* Validateable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validateable.swift; sourceTree = "<group>"; };
@@ -55,6 +54,7 @@
 		FCE261A71CFF011B00F183A0 /* ComparableValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComparableValidator.swift; sourceTree = "<group>"; };
 		FCE261A91CFF015C00F183A0 /* ComparableValidationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComparableValidationError.swift; sourceTree = "<group>"; };
 		FCE261AB1CFF31E500F183A0 /* ValidationUserInputError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationUserInputError.swift; sourceTree = "<group>"; };
+		FCE261B01CFF55DF00F183A0 /* AggregateErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AggregateErrorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +109,9 @@
 		FC723B8C1CFEEECA004DB504 /* SwiftValidationTests */ = {
 			isa = PBXGroup;
 			children = (
-				FC723B8D1CFEEECA004DB504 /* SwiftValidationTests.swift */,
+				FCE261AD1CFF55A800F183A0 /* Errors */,
+				FCE261AE1CFF55AF00F183A0 /* Regex */,
+				FCE261AF1CFF55B800F183A0 /* Validation */,
 				FC723B8F1CFEEECA004DB504 /* Info.plist */,
 			);
 			path = SwiftValidationTests;
@@ -163,6 +165,28 @@
 				FC723BAA1CFEF61E004DB504 /* RegexError.swift */,
 			);
 			name = Errors;
+			sourceTree = "<group>";
+		};
+		FCE261AD1CFF55A800F183A0 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				FCE261B01CFF55DF00F183A0 /* AggregateErrorTests.swift */,
+			);
+			name = Errors;
+			sourceTree = "<group>";
+		};
+		FCE261AE1CFF55AF00F183A0 /* Regex */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Regex;
+			sourceTree = "<group>";
+		};
+		FCE261AF1CFF55B800F183A0 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Validation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,7 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC723B8E1CFEEECA004DB504 /* SwiftValidationTests.swift in Sources */,
+				FCE261B11CFF55DF00F183A0 /* AggregateErrorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
