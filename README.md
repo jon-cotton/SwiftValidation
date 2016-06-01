@@ -1,4 +1,4 @@
-# Swift Validation
+# Swift Validation [![Build Status](https://travis-ci.org/joncottonskyuk/SwiftValidation.svg?branch=master)](https://travis-ci.org/joncottonskyuk/SwiftValidation)
 Simple Validation library for Swift, adds validation directly to built in types String, Int, Double and Float
 
 ## Features
