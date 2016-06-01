@@ -15,6 +15,7 @@ public enum StringValidator: Validator {
     case minimumLength(Int)
     case maximumLength(Int)
     case lengthWithinRange(Int, Int)
+    case oneOf([String])
     
     public func isValid(value: String) throws -> Bool {
         let string = value
@@ -45,6 +46,10 @@ public enum StringValidator: Validator {
             minLength = min
             maxLength = max
             
+        case .oneOf(let allowedValues):
+            guard allowedValues.contains(string) else {
+                throw StringValidationError.stringIsNotOneOfAllowedValues(allowedValues)
+            }
         }
         
         if let minLength = minLength {

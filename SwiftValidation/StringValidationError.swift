@@ -17,4 +17,5 @@ public enum StringValidationError: ErrorType {
     case stringsDoNotMatch
     case stringIsShorterThanAllowedMinimumLength(Int)
     case stringIsLongerThanAllowedMaximumLength(Int)
+    case stringIsNotOneOfAllowedValues([String])
 }
