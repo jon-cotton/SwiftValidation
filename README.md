@@ -76,6 +76,62 @@ The built in `StringValidator` has several basic rules that can be used to build
 - `.maximumLength(Int)` - The string's length must be less than or equal to the supplied value
 - `.lengthWithinRange(Int, Int)` - The string's length must be within the supplied bounds, the first value must be less than the second, otherwise an error will be thrown.
 
+#### Built in regex patterns
+The library comes with a set of basic regex patterns that you can use to validate strings with...
+```swift
+public enum StringValidationPattern: String, RegexPattern {
+    case alphaOnly = "^[a-zA-Z]*$"
+    case numericOnly = "^[0-9]*$"
+    case alphaNumericOnly = "^[a-zA-Z0-9]*$"
+    case email = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+
+    public var errorToThrowOnFailure: ErrorType {
+        switch self {
+            case .alphaOnly: return StringValidationError.stringContainsNonAlphaCharacters
+            case .numericOnly: return StringValidationError.stringContainsNonNumericCharacters
+            case .alphaNumericOnly: return StringValidationError.stringContainsNonAlphaNumericCharacters
+            case .email: return StringValidationError.stringIsNotAValidEmailAddress
+        }
+    }
+}
+```
+
+In use...
+```swift
+let validString = try "someString".validValue(.regex(StringValidationPattern.alphaOnly))
+```
+
+#### Providing custom regex patterns
+
+If you need to do more complex string validation with a custom regex pattern, you can just use a string literal to inject your custom pattern e.g. `let validString = try "someString".validValue(.regex("^[a-zA-Z*%$£@!]*$"))`. A nicer way to provide custom patterns though is to create a String based enum that conforms to the [RegexPattern](#regexpattern) protocol. All String RawRepresentibles already have default functionality to provide the rawValue as the regex pattern, so you only need to create your enum and assign the pattern to each case, like so...
+```swift
+enum UserValidationPattern: String, RegexPattern {
+    case password = "^[a-zA-Z0-9*_\\-&%\\$£@]$"
+}
+```
+
+Then in use, you can just pass the enum case directly, without having to extract the rawValue yourself
+```swift
+passwordTextField.validValue(.regex(UserValidationPattern.password), .lengthWithinRange(8, 32), .match(passwordConfirmation))
+```
+
+The default behaviour is to throw a `RegexError.stringDoesNotMatchRegexPattern` error if the pattern fails to match the string. You can also provide a custom error to throw by implementing the `errorToThrowOnFailure` property in your custom RegexPattern, e.g...
+```swift
+enum UserValidationError: ErrorType {
+    case passwordIsUnexpectedFormat
+}
+
+enum UserValidationPattern: String, RegexPattern {
+    case password = "^[a-zA-Z0-9*_\\-&%\\$£@]$"
+
+    var errorToThrowOnFailure: ErrorType? {
+        switch self {
+            case .password: return UserValidationError.passwordIsUnexpectedFormat
+        }
+    }
+}
+```
+
 ### Comparable Validator
 
 The `ComparableValidator` allows you to validate any `Comparable` type against another value of the same type, the library extends the built in `Int`, `Double` and `Float` types to be validateable using ComparableValidators.
@@ -93,7 +149,8 @@ try 100.0.validValue(.range(0.1, 99.9)) // fail
 ```
 
 ### Writing a custom Validator
-If you have a custom type that you want to be able to validate, you just need to make the type conform to `Validateable` by providing a `Validator` that can validate your type.
+
+If you have a custom type that you want to be able to validate, you just need to make the type conform to [Validateable](#validateable) by providing a [Validator](#validator) that can validate your type.
 
 If you had a `Person` type that looked like...
 ```swift
@@ -105,7 +162,7 @@ struct Person {
 }
 ```
 
-You would first need a `PersonValidator` that conforms to `Validator` and an error to throw on failure...
+You would first need a `PersonValidator` that conforms to [Validator](#validator) and an error to throw on failure...
 ```swift
 struct PersonValidator: Validator {
     func isValid(value: Person) throws -> Bool {
@@ -125,7 +182,7 @@ enum PersonValidationError: ErrorType {
 }
 ```
 
-You then just need to make Person conform to `Validateable`. The default behaviour already provided by the protocol extension is usually ok, you just need to resolve the generic `ValidatorType` to the Validator you've just created...
+You then just need to make Person conform to [Validateable](#validateable). The default behaviour already provided by the protocol extension is usually ok, you just need to resolve the generic `ValidatorType` to the Validator you've just created...
 
 ```swift
 extension Person: Validateable {
@@ -136,7 +193,6 @@ extension Person: Validateable {
 Now you can validate a person...
 ```swift
 // The following code prints notAValidPerson to console
-
 var somebody = Person()
 somebody.firstname = "Jim"
 somebody.surname = "Robinson"
@@ -192,7 +248,6 @@ enum PersonValidationError: ErrorType {
 In use...
 ```swift
 // The following code prints personIsNotAnAdult personDoesNotHaveAnEmailAddress to console
-
 do {
     let validPerson = try somebody.validValue(.mustBeAdult, .mustHaveEmailAddress)
 } catch let errors as AggregateError {
@@ -204,24 +259,39 @@ do {
 
 ## New types
 
-### RegexPattern
+### Validator
 
-RegexPattern is a protocol that custom types can conform to, the library extends `String` and any String `RawRepresentible` types to conform to `RegexPattern`. This means you can pass a String literal `.regex("^some regex pattern$")` or, even nicer create a String based enum and add conformance to `RegexPattern`. The library implements this design itself and comes with several built in regex patterns e.g. `.regex(StringValidationPattern.email)`.
+All Validators must conform to the generic protocol `Validator`, there is no default implementation for `isValid()` so you must implement that your self when conforming to this protocol. The Generic type should be resolved when you provide your implementation of `isValid()`.
 
 ```swift
-public enum StringValidationPattern: String, RegexPattern {
-    case alphaOnly = "^[a-zA-Z]*$"
-    case numericOnly = "^[0-9]*$"
-    case alphaNumericOnly = "^[a-zA-Z0-9]*$"
-    case email = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+public protocol Validator {
+    associatedtype T
 
-    public var errorToThrow: ErrorType {
-        switch self {
-            case .alphaOnly: return StringValidationError.stringContainsNonAlphaCharacters
-            case .numericOnly: return StringValidationError.stringContainsNonNumericCharacters
-            case .alphaNumericOnly: return StringValidationError.stringContainsNonAlphaNumericCharacters
-            case .email: return StringValidationError.stringIsNotAValidEmailAddress
-        }
-    }
+    func isValid(value: T) throws -> Bool
+}
+```
+
+### Validateable
+
+To make a type validateable, you need to conform to the `Validateable` protocol, a default implementation of `validValue()` is already provided and should be ok for most types. The only thing you need to add when conforming to the protocol is usually the resolution of the Generic type ValidatorType which should just be the type of the custom `Validator` you write to validate the type you want to make `Validateable`.
+
+```swift
+public protocol Validateable {
+    associatedtype ValidatorType: Validator
+
+    func validValue(validators: ValidatorType...) throws -> ValidatorType.T
+}
+```
+
+### RegexPattern
+
+RegexPattern is a protocol that custom types can conform to, the library extends `String` and any String `RawRepresentible` types to conform to `RegexPattern`. This means you can pass a String literal `.regex("^some regex pattern$")` or, even nicer create a String based enum and add conformance to `RegexPattern`. `match()` and `errorToThrowOnFailure` already have default implementations for all types, the pattern property is implemented for String and RawRepresentible where RawValue == String.
+
+```swift
+public protocol RegexPattern {
+    var pattern: String {get}
+    var errorToThrowOnFailure: ErrorType? {get}
+
+    func match(string: String) throws -> Bool
 }
 ```
