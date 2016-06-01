@@ -62,3 +62,15 @@ public enum StringValidator: Validator {
         return true
     }
 }
+
+extension String: Validateable {
+    public typealias ValidatorType = StringValidator
+}
+
+extension UITextField: Validateable {
+    public typealias ValidatorType = StringValidator
+    
+    public func validValue(validators: StringValidator...) throws -> String {
+        return try text.validValue(validators)
+    }
+}

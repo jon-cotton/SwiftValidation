@@ -14,8 +14,8 @@ public protocol Validateable {
     func validValue(validators: ValidatorType...) throws -> ValidatorType.T
 }
 
-extension Validateable where ValidatorType.T == Self {
-    func validValue(validators: [ValidatorType]) throws -> Self {
+public extension Validateable where ValidatorType.T == Self {
+    public func validValue(validators: [ValidatorType]) throws -> Self {
         var errors = AggregateError()
         
         for validator in validators {
@@ -33,13 +33,13 @@ extension Validateable where ValidatorType.T == Self {
         return self
     }
     
-    func validValue(validators: ValidatorType...) throws -> Self {
+    public func validValue(validators: ValidatorType...) throws -> Self {
         return try validValue(validators)
     }
 }
 
-extension Optional where Wrapped: Validateable, Wrapped.ValidatorType.T == Wrapped {
-    func validValue(validators: [Wrapped.ValidatorType]) throws -> Wrapped {
+public extension Optional where Wrapped: Validateable, Wrapped.ValidatorType.T == Wrapped {
+    public func validValue(validators: [Wrapped.ValidatorType]) throws -> Wrapped {
         switch self {
         case .None:
             throw ValidationError.valueIsNil
@@ -49,7 +49,7 @@ extension Optional where Wrapped: Validateable, Wrapped.ValidatorType.T == Wrapp
         }
     }
     
-    func validValue(validators: Wrapped.ValidatorType...) throws -> Wrapped {
+    public func validValue(validators: Wrapped.ValidatorType...) throws -> Wrapped {
         return try validValue(validators)
     }
 }
