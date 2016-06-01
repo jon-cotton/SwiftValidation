@@ -10,6 +10,7 @@
 		FC5388CD1CFF5A28002521E8 /* RegexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5388CC1CFF5A28002521E8 /* RegexTests.swift */; };
 		FC5388CF1CFF5DCA002521E8 /* RegexPatternTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5388CE1CFF5DCA002521E8 /* RegexPatternTests.swift */; };
 		FC5388D11CFF6672002521E8 /* ValidateableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5388D01CFF6672002521E8 /* ValidateableTests.swift */; };
+		FC5388D31CFF9B94002521E8 /* StringValidationPatternTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5388D21CFF9B94002521E8 /* StringValidationPatternTests.swift */; };
 		FC723B821CFEEECA004DB504 /* SwiftValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = FC723B811CFEEECA004DB504 /* SwiftValidation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FC723B891CFEEECA004DB504 /* SwiftValidation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC723B7E1CFEEECA004DB504 /* SwiftValidation.framework */; };
 		FC723B9C1CFEF1EB004DB504 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC723B9B1CFEF1EB004DB504 /* Validator.swift */; };
@@ -42,6 +43,7 @@
 		FC5388CC1CFF5A28002521E8 /* RegexTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexTests.swift; sourceTree = "<group>"; };
 		FC5388CE1CFF5DCA002521E8 /* RegexPatternTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexPatternTests.swift; sourceTree = "<group>"; };
 		FC5388D01CFF6672002521E8 /* ValidateableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateableTests.swift; sourceTree = "<group>"; };
+		FC5388D21CFF9B94002521E8 /* StringValidationPatternTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringValidationPatternTests.swift; sourceTree = "<group>"; };
 		FC723B7E1CFEEECA004DB504 /* SwiftValidation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftValidation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC723B811CFEEECA004DB504 /* SwiftValidation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftValidation.h; sourceTree = "<group>"; };
 		FC723B831CFEEECA004DB504 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				FC5388D01CFF6672002521E8 /* ValidateableTests.swift */,
+				FC5388D21CFF9B94002521E8 /* StringValidationPatternTests.swift */,
 			);
 			name = Validation;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				FC5388CD1CFF5A28002521E8 /* RegexTests.swift in Sources */,
 				FC5388CF1CFF5DCA002521E8 /* RegexPatternTests.swift in Sources */,
 				FC5388D11CFF6672002521E8 /* ValidateableTests.swift in Sources */,
+				FC5388D31CFF9B94002521E8 /* StringValidationPatternTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

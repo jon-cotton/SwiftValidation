@@ -18,7 +18,7 @@ public protocol RegexPattern {
 public extension RegexPattern {
     func match(string: String) throws -> Bool {
         guard string =~ pattern else {
-            throw errorToThrowOnFailure ?? RegexError.stringDoesNotMatchRegexPattern
+            throw self.errorToThrowOnFailure ?? RegexError.stringDoesNotMatchRegexPattern
         }
         
         return true
