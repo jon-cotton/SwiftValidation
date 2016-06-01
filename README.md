@@ -6,8 +6,9 @@ Adds the ability to validate String, Int, Double and Float values with basic val
 
 ## Installation
 
-### Carthage [Github Repo](https://github.com/Carthage/Carthage)
+### [Carthage](https://github.com/Carthage/Carthage)
 Add the following line to your Cartfile
+
 `github "joncottonskyuk/SwiftValidation"`
 
 ## Usage
