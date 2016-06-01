@@ -8,6 +8,6 @@
 
 import Foundation
 
-enum RegexError: ErrorType {
+public enum RegexError: ErrorType {
     case stringDoesNotMatchRegexPattern
 }

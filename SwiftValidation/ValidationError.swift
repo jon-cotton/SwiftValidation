@@ -8,6 +8,6 @@
 
 import Foundation
 
-enum ValidationError: ErrorType {
+public enum ValidationError: ErrorType {
     case valueIsNil
 }

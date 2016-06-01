@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Regex {
+public struct Regex {
     let expression: NSRegularExpression
     
     init(_ pattern: RegexPattern) throws {

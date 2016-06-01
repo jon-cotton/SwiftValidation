@@ -8,14 +8,14 @@
 
 import Foundation
 
-protocol RegexPattern {
+public protocol RegexPattern {
     var pattern: String {get}
     var errorToThrow: ErrorType {get}
     
     func match(string: String) throws -> Bool
 }
 
-extension RegexPattern {
+public extension RegexPattern {
     func match(string: String) throws -> Bool {
         guard string =~ pattern else {
             throw errorToThrow
@@ -25,7 +25,7 @@ extension RegexPattern {
     }
 }
 
-extension String: RegexPattern {
+public extension RegexPattern where Self: String {
     var pattern: String {
         return self
     }
@@ -35,7 +35,7 @@ extension String: RegexPattern {
     }
 }
 
-extension RegexPattern where Self: RawRepresentable, Self.RawValue == String {
+public extension RegexPattern where Self: RawRepresentable, Self.RawValue == String {
     var pattern: String {
         return rawValue
     }
