@@ -14,7 +14,7 @@ public enum StringValidationPattern: String, RegexPattern {
     case alphaNumericOnly = "^[a-zA-Z0-9]*$"
     case email = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
     
-    public var errorToThrow: ErrorType {
+    public var errorToThrowOnFailure: ErrorType {
         switch self {
             case .alphaOnly: return StringValidationError.stringContainsNonAlphaCharacters
             case .numericOnly: return StringValidationError.stringContainsNonNumericCharacters

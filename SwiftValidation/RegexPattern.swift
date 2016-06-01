@@ -10,7 +10,7 @@ import Foundation
 
 public protocol RegexPattern {
     var pattern: String {get}
-    var errorToThrow: ErrorType {get}
+    var errorToThrowOnFailure: ErrorType? {get}
     
     func match(string: String) throws -> Bool
 }
@@ -18,20 +18,20 @@ public protocol RegexPattern {
 public extension RegexPattern {
     func match(string: String) throws -> Bool {
         guard string =~ pattern else {
-            throw errorToThrow
+            throw errorToThrowOnFailure ?? RegexError.stringDoesNotMatchRegexPattern
         }
         
         return true
+    }
+    
+    public var errorToThrowOnFailure: ErrorType? {
+        return nil
     }
 }
 
 extension String: RegexPattern {
     public var pattern: String {
         return self
-    }
-    
-    public var errorToThrow: ErrorType {
-        return RegexError.stringDoesNotMatchRegexPattern
     }
 }
 

@@ -55,7 +55,7 @@ do {
     /*
     ValidationUserInputError is a wrapper around an AggregateError that also has a UIElement property
     that holds a reference to the UIControl that the error relates to, this allows you to check multiple
-    fields in a single do, catch and then tie the errors back up the relevant UIControl later.
+    fields in a single do-catch and then tie the errors back up the relevant UIControl later.
     */
     print(UIError.errors.reduce("", combine: { "\($0) \($1)" }))
 } catch {
@@ -91,6 +91,8 @@ try 100.validValue(.minimumValue(400)) // fail
 
 try 100.0.validValue(.range(0.1, 99.9)) // fail
 ```
+
+### Writing a custom Validator
 
 ## New types
 
