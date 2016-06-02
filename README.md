@@ -213,7 +213,7 @@ do {
 }
 ```
 
-You can of course be more granular with your validation rules , a nicer way to implement the PersonValidator above might be...
+You can of course be more granular with your validation rules, a nicer way to implement the PersonValidator above might be...
 ```swift
 enum PersonValidator: Validator {
     case mustBeAdult
