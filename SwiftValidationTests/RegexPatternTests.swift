@@ -10,7 +10,6 @@ import XCTest
 @testable import SwiftValidation
 
 class RegexPatternTests: XCTestCase {
-
     func test_string_literal_can_be_used_as_regex_pattern() {
         guard (try? Regex("^*$")) != nil else {
             XCTFail("Expected Regex init to succeed with valid regex pattern from String")
@@ -73,5 +72,4 @@ class RegexPatternTests: XCTestCase {
             XCTFail("Regex match failure did not throw error from errorToThrowOnFailure property")
         }
     }
-
 }

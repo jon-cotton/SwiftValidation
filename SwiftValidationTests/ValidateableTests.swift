@@ -79,5 +79,4 @@ class ValidateableTests: XCTestCase {
         
         XCTAssert(validValue === mockValidateable)
     }
-
 }

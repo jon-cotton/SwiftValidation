@@ -64,5 +64,4 @@ class AggregateErrorTests: XCTestCase {
         
         XCTAssertFalse(aggregateError.isEmpty)
     }
-
 }

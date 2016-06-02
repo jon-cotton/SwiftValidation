@@ -10,7 +10,6 @@ import XCTest
 @testable import SwiftValidation
 
 class StringValidationPatternTests: XCTestCase {
-
     func test_string_validation_alpha_only_regex_pattern_returns_true_when_matching_alpha_only_string() {
         guard let didMatch = try? StringValidationPattern.alphaOnly.match("aBcDEfGHijklM") else {
             XCTFail("Expected alpha only string to match alphaOnly StringValidationPattern")
@@ -110,5 +109,4 @@ class StringValidationPatternTests: XCTestCase {
             }
         }
     }
-
 }
