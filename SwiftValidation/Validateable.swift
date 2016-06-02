@@ -42,7 +42,9 @@ public extension Optional where Wrapped: Validateable, Wrapped.ValidatorType.T =
     public func validValue(validators: [Wrapped.ValidatorType]) throws -> Wrapped {
         switch self {
         case .None:
-            throw ValidationError.valueIsNil
+            var errors = AggregateError()
+            errors.addError(ValidationError.valueIsNil)
+            throw errors
             
         case .Some(let value):
             return try value.validValue(validators)

@@ -58,8 +58,13 @@ class ValidateableTests: XCTestCase {
         
         do {
             try mockValidateable.validValue(mockValidator)
-        } catch let validationError as ValidationError {
-            XCTAssertEqual(validationError, ValidationError.valueIsNil)
+        } catch let errors as AggregateError {
+            guard let firstError = errors[0] as? ValidationError else {
+                XCTFail("Validateable validValue threw aggregate error containing unexpected when testing nil optional")
+                return
+            }
+            
+            XCTAssertEqual(firstError, ValidationError.valueIsNil)
         } catch {
             XCTFail("Validateable validValue threw unexpected error when testing nil optional")
         }
