@@ -6,8 +6,6 @@
 //  Copyright © 2016 joncotton. All rights reserved.
 //
 
-import Foundation
-
 import XCTest
 @testable import SwiftValidation
 
@@ -194,5 +192,4 @@ class StringValidatorTests: XCTestCase {
             }
         }
     }
-    
 }
