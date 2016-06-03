@@ -4,6 +4,8 @@ Simple Validation library for Swift, adds validation directly to built in types 
 ## Features
 Adds the ability to validate String, Int, Double and Float values with basic validation rules out of the box. Also extends UITextField so you can easily test the validity of user input. The two base types `Validator` and `Validateable` are generic enough that they can be easily applied to any type, so you can add a set of validation rules for any custom type you create. Validation failures will throw 'multiple' errors, once for each failure, this allows you to quickly check a whole form of UITextFields for valid user input and report back all errors in a single pass.
 
+An example project to show the library in use is available here: [Swift Validation Example](https://github.com/joncottonskyuk/SwiftValidationExample)
+
 ## Installation
 
 ### [Carthage](https://github.com/Carthage/Carthage)
