@@ -81,8 +81,6 @@ extension UITextField: Validateable {
         } catch let errors as AggregateError {
             let UIError = ValidationUserInputError(UIElement: self, errors: errors)
             throw UIError
-        } catch {
-            throw error
         }
     }
 }
