@@ -75,12 +75,16 @@ extension String: Validateable {
 extension UITextField: Validateable {
     public typealias ValidatorType = StringValidator
     
-    public func validValue(validators: StringValidator...) throws -> String {
+    public func validValue(validators: [StringValidator]) throws -> String {
         do {
             return try text.validValue(validators)
         } catch let errors as AggregateError {
             let UIError = ValidationUserInputError(UIElement: self, errors: errors)
             throw UIError
         }
+    }
+    
+    public func validValue(validators: StringValidator...) throws -> String {
+        return try validValue(validators)
     }
 }
