@@ -90,5 +90,16 @@ class ComparableValidatorTests: XCTestCase {
             }
         }
     }
-
+    
+    func test_comparable_validator_is_valid_returns_true_for_value_within_supplied_range_when_testing_for_value_within_range() {
+        let comparableValidator = ComparableValidator.range(10, 20)
+        
+        guard let result = try? comparableValidator.isValid(15) else {
+            XCTFail("Expected value in range test to pass when testing value within bounds")
+            return
+        }
+        
+        XCTAssertTrue(result)
+    }
+    
 }
