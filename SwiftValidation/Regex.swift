@@ -20,12 +20,3 @@ public struct Regex {
         return matches.count > 0
     }
 }
-
-infix operator =~ {}
-func =~ (input: String, pattern: RegexPattern) -> Bool {
-    do {
-        return try Regex(pattern).test(input)
-    } catch {
-        return false
-    }
-}

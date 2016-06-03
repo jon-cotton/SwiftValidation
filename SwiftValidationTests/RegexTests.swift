@@ -31,16 +31,4 @@ class RegexTests: XCTestCase {
         
         XCTAssertFalse(regex.test("abc123"))
     }
-    
-    func test_regex_operator_returns_true_when_testing_against_a_pattern_that_does_match() {
-        XCTAssertTrue("abc123" =~ "^*$")
-    }
-    
-    func test_regex_operator_returns_false_when_testing_against_a_pattern_that_does_not_match() {
-        XCTAssertFalse("abc123" =~ "^[a-z]*$")
-    }
-    
-    func test_regex_operator_returns_false_when_testing_against_an_invalid_pattern() {
-        XCTAssertFalse("abc123" =~ "")
-    }
 }

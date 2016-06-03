@@ -17,10 +17,12 @@ public protocol RegexPattern {
 
 public extension RegexPattern {
     func match(string: String) throws -> Bool {
-        guard string =~ pattern else {
+        let regex = try Regex.init(self)
+
+        guard regex.test(string) else {
             throw self.errorToThrowOnFailure ?? RegexError.stringDoesNotMatchRegexPattern
         }
-        
+
         return true
     }
     
