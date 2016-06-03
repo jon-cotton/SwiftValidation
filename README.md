@@ -79,7 +79,7 @@ The built in `StringValidator` has several basic rules that can be used to build
 - `.match(String)` - The string must be equal to the supplied string
 - `.minimumLength(Int)` - The string's length must be greater or equal to the supplied value
 - `.maximumLength(Int)` - The string's length must be less than or equal to the supplied value
-- `.lengthWithinRange(Int, Int)` - The string's length must be within the supplied bounds, the first value must be less than the second, otherwise an error will be thrown.
+- `.lengthWithinRange(Int, Int)` - The string's length must be within the supplied bounds. The lowest value is presumed to be the min and highest value the max, so values can be supplied in any order.
 - `.oneOf([String])` - The string's value must match one of the supplied values in the array.
 
 #### Built in regex patterns

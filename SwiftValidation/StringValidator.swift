@@ -43,8 +43,8 @@ public enum StringValidator: Validator {
             maxLength = max
             
         case .lengthWithinRange(let min, let max):
-            minLength = min
-            maxLength = max
+            minLength = Swift.min(min, max)
+            maxLength = Swift.max(min, max)
             
         case .oneOf(let allowedValues):
             guard allowedValues.contains(string) else {

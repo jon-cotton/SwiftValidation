@@ -25,12 +25,8 @@ public enum ComparableValidator<T: Comparable>: Validator {
             max = inMax
             
         case .range(let inMin, let inMax):
-            min = inMin
-            max = inMax
-            
-            guard min < max else {
-                throw ComparableValidationError<T>.lowerBoundsMustBeLessThanUpperBounds
-            }
+            min = Swift.min(inMin, inMax)
+            max = Swift.max(inMin, inMax)
         }
         
         if let min = min {

@@ -11,5 +11,4 @@ import Foundation
 public enum ComparableValidationError<T>: ErrorType {
     case valueIsBelowMinimumBounds(T)
     case valueIsAboveMaximumBounds(T)
-    case lowerBoundsMustBeLessThanUpperBounds
 }
