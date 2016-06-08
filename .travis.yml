@@ -4,4 +4,4 @@ xcode_project: SwiftValidation.xcodeproj
 xcode_scheme: SwiftValidation
 xcode_sdk: iphonesimulator9.3
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash) -J 'SwiftValidation'
