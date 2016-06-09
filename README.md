@@ -1,4 +1,4 @@
-# Swift Validation [![Build Status](https://travis-ci.org/joncottonskyuk/SwiftValidation.svg?branch=master)](https://travis-ci.org/joncottonskyuk/SwiftValidation) [![codecov](https://codecov.io/gh/joncottonskyuk/SwiftValidation/branch/master/graph/badge.svg)](https://codecov.io/gh/joncottonskyuk/SwiftValidation)
+# Swift Validation [![Build Status](https://travis-ci.org/joncottonskyuk/SwiftValidation.svg?branch=master)](https://travis-ci.org/joncottonskyuk/SwiftValidation) [![codecov](https://codecov.io/gh/joncottonskyuk/SwiftValidation/branch/master/graph/badge.svg)](https://codecov.io/gh/joncottonskyuk/SwiftValidation) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 Simple Validation library for Swift, adds validation directly to built in types String, Int, Double and Float
 
