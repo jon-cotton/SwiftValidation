@@ -12,7 +12,7 @@ An example project to show the library in use is available here: [Swift Validati
 ### [Carthage](https://github.com/Carthage/Carthage)
 Add the following line to your Cartfile
 
-`github "joncottonskyuk/SwiftValidation"`
+`github "jon-cotton/SwiftValidation"`
 
 ## Usage
 The `Validateable` behaviour is applied directly to the built in `String` type, so to validate the value of a String, you can simply do...
